@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+	<div>
+        <div>
+            <h2>{{search_recipe.name  }}</h2>
+            <i>Description</i>
+            <p>{{ search_recipe.description }}</p>
+            <i>Ingredients</i>
+            <p>{{ search_recipe.ingredients }}</p>
+            <i>Procedure</i>
+            <p>{{ search_recipe.directions }}</p>
+
+        </div>
+    </div>
+{% endblock %}
