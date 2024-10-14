@@ -10,7 +10,7 @@
                 <p>
                     {{ recipe.description }}
                 </p>
-                <a href="{% url "search_recipe" recipe.id %}">View Recipe Details</a>
+                <a href="{% url "recipes:search_recipe" recipe.id %}">View Recipe Details</a>
             </div>
         {% endfor %}
 

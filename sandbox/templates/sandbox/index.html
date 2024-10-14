@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-    {%if foods%}
+    {%if recipes%}
         <ul>
-            {%for recipe in foods %}
-                <li>{{ recipe }}</li>
+            {%for recipe in recipes %}
+                <li>{{ recipe.name }}</li>
             {% endfor %}
         </ul>
     {% else %}

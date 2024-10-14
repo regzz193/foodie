@@ -1,5 +1,17 @@
 from django.shortcuts import render
 
+from foodie_app.models import Category
+from recipes.models import Recipe
+
+
 # Create your views here.
 def index(request):
-    return render(request, "foodie_app/index.html")
+    categories = Category.objects.all()
+    return render(request, "foodie_app/index.html", context={"categories": categories})
+
+
+def recipes(request, category_id):
+    recipe = Recipe.objects.filter(category=category_id)
+    categories = Category.objects.get(pk=category_id)
+    context = {"recipes": recipe, "categories": categories}
+    return render(request, "foodie_app/recipes.html", context=context)
