@@ -1,4 +1,3 @@
-from django.core.exceptions.ValidationError import messages
 from django.shortcuts import render
 
 from foodie_app.forms import CategoryForm
@@ -19,5 +18,13 @@ def recipes(request, category_id):
     return render(request, "foodie_app/recipes.html", context=context)
 
 def add_category(request):
-    form = CategoryForm(request.POST or None)
-    return render(request,"foodie_app/add_category.html", context={"form": form})
+    if request.method == "POST":
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, "foodie_app/index.html")
+    else:
+        form = CategoryForm()
+
+    return render(request, "foodie_app/add_category.html", {"form": form})
+
